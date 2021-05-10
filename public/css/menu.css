@@ -1,0 +1,13 @@
+nav{
+    background-image: linear-gradient(180deg,#0059b3,#66b3ff);
+    max-width: 80%;
+    margin-left: 10%;
+    
+
+    /* #66b3ff */
+}   
+nav a{
+        color: #F5F5F5;
+}
+
+
