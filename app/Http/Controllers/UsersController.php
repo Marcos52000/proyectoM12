@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use PDF;
 use App\Exports\UsersExport;
 use Maatwebsite\Excel\Facades\Excel;
 use BootstrapComponents;
@@ -112,8 +113,13 @@ class UsersController extends Controller
         return Excel::download(new UsersExport, 'users.xlsx');
     }
     
-    public function export2() 
+      
+    public function download()
     {
-        return Excel::download(new UsersExport, 'users.pdf');
+        $data = User::all();
+        view()->share('user',$data);
+        $pdf = PDF::loadView('pdf.user', $data)->setPaper('a4', 'landscape');
+
+        return $pdf->download('users.pdf');
     }
 }

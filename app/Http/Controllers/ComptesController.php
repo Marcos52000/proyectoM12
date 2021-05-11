@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Compte;
+use PDF;
 use App\Exports\ComptesExport;
 use Maatwebsite\Excel\Facades\Excel;
 use BootstrapComponents;
@@ -118,8 +119,12 @@ class ComptesController extends Controller
          return Excel::download(new ComptesExport, 'comptes.xlsx');
      }
      
-     public function export2() 
+     public function download()
      {
-         return Excel::download(new ComptesExport, 'comptes.pdf');
+         $data = Compte::all();
+         view()->share('compte',$data);
+         $pdf = PDF::loadView('pdf.compte', $data)->setPaper('a4', 'landscape');
+ 
+         return $pdf->download('compte.pdf');
      }
 }

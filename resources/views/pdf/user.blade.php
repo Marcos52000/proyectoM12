@@ -15,32 +15,32 @@
             <thead>
                 <tr>
                     <th style="width:30px">Id</th>
-                    <th class="w-50">Categoria</th>
-                    <th class="w-50">Estat</th>
-                    <th class="w-50">Create_user_id</th>
-                    <th class="w-50">edit_user_id</th>
+                    <th class="w-50">User</th>
+                    <th class="w-50">Password</th>
+                    <th class="w-50">Email</th>
+                    <th class="w-25">Estat</th>
                     <th class="w-50">Created_at</th>
                     <th class="w-50">Updated_at</th>
 
                 </tr>
             </thead>
             <tbody>
-            @foreach ($categoria as $data)
+            @foreach ($user as $data)
                 <tr>
                     <td>
                         {{$data->id}}
                     </td>
                     <td>
-                        {{$data->categoria}}
+                        {{$data->user}}
+                    </td>
+                    <td>
+                        {{ substr($data->password, 0,  20) }}
+                    </td>
+                    <td>
+                        {{$data->email}}
                     </td>
                     <td>
                         {{$data->estat}}
-                    </td>
-                    <td>
-                        {{$data->create_user_id}}
-                    </td>
-                    <td>
-                        {{$data->edit_user_id}}
                     </td>
                     <td>
                         {{$data->created_at}}

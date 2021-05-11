@@ -55,7 +55,7 @@ Route::get('/curs/edit/{id}', 'CursosController@edit')->name("curs.edit")->middl
 Route::post('/curs/edit/{id}', 'CursosController@update')->name("curs.update")->middleware('auth');
 Route::delete('/curs/delete/{id}', 'CursosController@destroy')->name("curs.delete")->middleware('auth');
 Route::get('/curs/export/', 'CursosController@export')->name("curs.export")->middleware('auth');
-Route::get('/curs/export2/', 'CursosController@export2')->name("curs.export")->middleware('auth');
+Route::get('/curs/export2/', 'CursosController@download')->name("curs.export")->middleware('auth');
 
 //Rutes gestio pagaments
 Route::get('/pagament', 'PagamentsController@index')->name("pagament.index")->middleware('auth');
@@ -65,7 +65,7 @@ Route::get('/pagament/edit/{id}', 'PagamentsController@edit')->name("pagament.ed
 Route::post('/pagament/edit/{id}', 'PagamentsController@update')->name("pagament.update")->middleware('auth');
 Route::delete('/pagament/delete/{id}', 'PagamentsController@destroy')->name("pagament.delete")->middleware('auth');
 Route::get('/gpagament/export/', 'PagamentsController@export')->name("pagament.export")->middleware('auth');
-Route::get('/gpagament/export2/', 'PagamentsController@export2')->name("pagament.export2")->middleware('auth');
+Route::get('/gpagament/export2/', 'PagamentsController@download')->name("pagament.export2")->middleware('auth');
 
 //Rutes gesto usuaris
 Route::get('/user', 'UsersController@index')->name("user.index")->middleware('auth');
@@ -75,7 +75,7 @@ Route::get('/user/edit/{id}', 'UsersController@edit')->name("user.edit")->middle
 Route::post('/user/edit/{id}', 'UsersController@update')->name("user.update")->middleware('auth');
 Route::delete('/user/delete/{id}', 'UsersController@destroy')->name("user.delete")->middleware('auth');
 Route::get('/user/export/', 'UsersController@export')->name("user.export")->middleware('auth');
-Route::get('/user/export2/', 'UsersController@export2')->name("user.export")->middleware('auth');
+Route::get('/user/export2/', 'UsersController@download')->name("user.export")->middleware('auth');
 
 //Rutes gestio comptes
 Route::get('/compte', 'ComptesController@index')->name("compte.index")->middleware('auth');
@@ -85,4 +85,4 @@ Route::get('/compte/edit/{id}', 'ComptesController@edit')->name("compte.edit")->
 Route::post('/compte/edit/{id}', 'ComptesController@update')->name("compte.update")->middleware('auth');
 Route::delete('/compte/delete/{id}', 'ComptesController@destroy')->name("compte.delete")->middleware('auth');
 Route::get('/compte/export/', 'ComptesController@export')->name("compte.export")->middleware('auth');
-Route::get('/compte/export2/', 'ComptesController@export2')->name("compte.export")->middleware('auth');
+Route::get('/compte/export2/', 'ComptesController@download')->name("compte.export")->middleware('auth');

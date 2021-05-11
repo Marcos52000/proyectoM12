@@ -15,23 +15,55 @@
             <thead>
                 <tr>
                     <th style="width:30px">Id</th>
-                    <th class="w-50">Categoria</th>
-                    <th class="w-50">Estat</th>
+                    <th class="w-25">Categoria_id</th>
+                    <th class="w-25">Compte_id</th>
+                    <th class="w-25">Curs_id</th>
+                    <th class="w-25">Nivell</th>
+                    <th class="w-50">Titol</th>
+                    <th class="w-50">Descripcio</th>
+                    <th class="w-25">Preu</th>
+                    <th class="w-50">Data_inici</th>
+                    <th class="w-50">Data_fi</th>
+                    <th class="w-25">Estat</th>
                     <th class="w-50">Create_user_id</th>
-                    <th class="w-50">edit_user_id</th>
+                    <th class="w-50">Edit_user_id</th>
                     <th class="w-50">Created_at</th>
                     <th class="w-50">Updated_at</th>
 
                 </tr>
             </thead>
             <tbody>
-            @foreach ($categoria as $data)
+            @foreach ($pagaments as $data)
                 <tr>
                     <td>
                         {{$data->id}}
                     </td>
                     <td>
-                        {{$data->categoria}}
+                        {{$data->categoria_id}}
+                    </td>
+                    <td>
+                        {{$data->compte_id}}
+                    </td>
+                    <td>
+                        {{$data->curs_id}}
+                    </td>
+                    <td>
+                        {{$data->nivell}}
+                    </td>
+                    <td>
+                        {{$data->titol}}
+                    </td>
+                    <td>
+                        {{ substr($data->descripcio, 0,  20) }}
+                    </td>
+                    <td>
+                        {{$data->preu}}
+                    </td>
+                    <td>
+                        {{$data->data_inici}}
+                    </td>
+                    <td>
+                        {{$data->data_fi}}
                     </td>
                     <td>
                         {{$data->estat}}

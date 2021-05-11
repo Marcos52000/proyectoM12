@@ -21,26 +21,20 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink{{$categoria->id}}">
               <?php  
               $date = date("Y-m-d");
+              $cont = 0;
               ?>
               @foreach($pagaments as $pagament)
                 @if($pagament->categoria_id == $categoria->id)
+                  <?php $cont++ ?>
                   @if($pagament->data_fi >= $date && $pagament->data_inici <= $date && $pagament->estat == 'Actiu')
                     <li>
                           <a class="dropdown-item" href="/pagament/{{$pagament->id}}">{{$pagament->titol}}</a>
                     </li>
                   @endif
-                @elseif($loop->last)
-                  @if($pagament->categoria_id == $categoria->id)
-                    @if($pagament->data_fi >= $date && $pagament->data_inici <= $date && $pagament->estat == 'Actiu')
-                      <li>
-                            <a class="dropdown-item" href="/pagament/{{$pagament->id}}">{{$pagament->titol}}</a>
-                      </li>
-                    @endif
-                  @else
-                    <li>
-                      <a class="dropdown-item" href="#">No hi ha pagaments</a>
-                    </li>    
-                  @endif
+                @elseif($loop->last && $cont == 0) 
+                  <li>
+                    <a class="dropdown-item" href="#">No hi ha pagaments</a>
+                  </li>
                 @endif
               @endforeach
             </ul>

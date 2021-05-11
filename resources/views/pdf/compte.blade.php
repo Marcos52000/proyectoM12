@@ -15,23 +15,30 @@
             <thead>
                 <tr>
                     <th style="width:30px">Id</th>
-                    <th class="w-50">Categoria</th>
+                    <th class="w-50">Compte</th>
+                    <th class="w-50">Fuc</th>
+                    <th class="w-50">Clau</th>
                     <th class="w-50">Estat</th>
                     <th class="w-50">Create_user_id</th>
-                    <th class="w-50">edit_user_id</th>
+                    <th class="w-50">Edit_user_id</th>
                     <th class="w-50">Created_at</th>
                     <th class="w-50">Updated_at</th>
-
                 </tr>
             </thead>
             <tbody>
-            @foreach ($categoria as $data)
+            @foreach ($compte as $data)
                 <tr>
                     <td>
                         {{$data->id}}
                     </td>
                     <td>
-                        {{$data->categoria}}
+                        {{$data->compte}}
+                    </td>
+                    <td>
+                        {{$data->fuc}}
+                    </td>
+                    <td>
+                        {{$data->clau}}
                     </td>
                     <td>
                         {{$data->estat}}

@@ -8,6 +8,7 @@ use App\Pagaments;
 use App\Categoria;
 use App\Compte;
 use App\Curs;
+use PDF;
 use App\Exports\PagamentsExport;
 use Maatwebsite\Excel\Facades\Excel;
 use BootstrapComponents;
@@ -145,9 +146,13 @@ class PagamentsController extends Controller
            return Excel::download(new PagamentsExport, 'pagaments.xlsx');
        }
        
-       public function export2() 
+       public function download()
        {
-           return Excel::download(new PagamentsExport, 'pagaments.pdf');
+           $data = pagaments::all();
+           view()->share('pagaments',$data);
+           $pdf = PDF::loadView('pdf.pagament', $data)->setPaper('a2', 'landscape');
+   
+           return $pdf->download('pagaments.pdf');
        }
 
 

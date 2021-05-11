@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Curs;
+use PDF;
 use Illuminate\Support\Facades\Auth;
 use App\Exports\CursosExport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -103,8 +104,12 @@ class CursosController extends Controller
           return Excel::download(new CursosExport, 'cursos.xlsx');
       }
       
-      public function export2() 
+      public function download()
       {
-          return Excel::download(new CursosExport, 'cursos.pdf');
+          $data = Curs::all();
+          view()->share('curs',$data);
+          $pdf = PDF::loadView('pdf.curs', $data)->setPaper('a4', 'landscape');
+  
+          return $pdf->download('cursos.pdf');
       }
 }

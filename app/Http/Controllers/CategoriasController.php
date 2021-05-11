@@ -109,7 +109,7 @@ class CategoriasController extends Controller
     {
         $data = Categoria::all();
         view()->share('categoria',$data);
-        $pdf = PDF::loadView('pdf.categoria', $data);
+        $pdf = PDF::loadView('pdf.categoria', $data)->setPaper('a4', 'landscape');
 
         return $pdf->download('categories.pdf');
     }
