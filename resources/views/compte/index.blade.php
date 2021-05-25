@@ -21,15 +21,15 @@
 		</div>
 		<div class="card-body" style="overflow: hidden">
 			<div class="table-responsive">
-				<table class="table table-striped table-bordered dt-responsive nowrap" id="dataTable">
+				<table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
 				<thead>
 					<tr>
-					<th style="width:30px">Id</th>
-					<th class="w-25">Compte</th>
-					<th class="w-25">Fuc</th>
-					<th class="w-25">Clau</th>
-					<th class="w-25">Estat</th>
-					<th style="max-width:100px">Editar</th>
+					<th style="width:30px" data-priority="1">Id</th>
+					<th class="w-25" >Compte</th>
+					<th class="w-25" >Fuc</th>
+					<th class="w-25" >Clau</th>
+					<th class="w-25" >Estat</th>
+					<th style="max-width:100px" >Editar</th>
 					<th style="max-width:100px">Eliminar</th>
 					</tr>
 				</thead>
@@ -58,7 +58,7 @@
 						</a>
 					</td>
 					<td style="max-width:100px">
-						<form action="/compte/delete/{{$compte->id}}" method="post" onsubmit="return confirm('Estas segur d\'esborrar la categoria?');">
+						<form class="float-rigth"action="/compte/delete/{{$compte->id}}" method="post" onsubmit="return confirm('Estas segur d\'esborrar el compte?');">
 							{{ method_field('DELETE') }}
 							{{ csrf_field() }}
 						<button type="submit" class="btn btn-danger" value=""><i class='fas fa-trash-alt'></i></button>

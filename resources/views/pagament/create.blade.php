@@ -68,7 +68,7 @@
     @endif
 
     <label class="mb-4 " for="preu">Preu: </label>
-    <input style="width:200px;" type="number" step='0.05' value='0.00' class="form-control" name="preu" id="preu">
+    <input style="width:200px;" type="number" step='0.05' value='0.00' min="1" class="form-control" name="preu" id="preu">
      @if($errors->has('preu'))
       <div style='height: 50px;' class="alert alert-danger"> 
         <p>Introdueix un preu valid</p>

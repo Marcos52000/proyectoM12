@@ -21,13 +21,14 @@
 		</div>
 		<div class="card-body" style="overflow: hidden">
 			<div class="table-responsive">
-				<table class="table table-striped" id="dataTable">
+				<table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
 					<thead>
 						<tr>
 						<th style="width: 25px">Id</th>
 						<th style="width: 150px">Usuaris</th>
 						<th style="width: 150px">Contrasenya</th>
 						<th style="width: 150px">Correu Electronic</th>
+						<th style="width: 150px">Rol</th>
 						<th style="width: 50px" >Editar</th>
 						<th style="width: 50px">Eliminar</th>
 						</tr>
@@ -47,6 +48,9 @@
 								</td>
 								<td>
 									{{$user->email}}
+								</td>
+								<td>
+									{{$user->rol}}
 								</td>
 								<td style="max-width:100px">
 					

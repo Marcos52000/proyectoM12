@@ -113,7 +113,7 @@ class ComptesController extends Controller
         Compte::find($id)->delete();
         return redirect()->route('compte.index')->with('success','Registro eliminado satisfactoriamente');
     }
-     //export exel y pdf
+     //export excel y pdf
      public function export() 
      {
          return Excel::download(new ComptesExport, 'comptes.xlsx');

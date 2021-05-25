@@ -19,7 +19,7 @@
 		</div>
 		<div class="card-body" style="overflow: hidden">
 			<div class="table-responsive">
-				<table class="table table-striped" id="dataTable">
+				<table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
 					<thead>
 						<tr>
 						<th style="width:30px">Id</th>
@@ -32,7 +32,7 @@
 						<th style="width:30px">Data Inici</th>
 						<th>Data fi</th>
 						<th>Estat</th>
-						<th style="max-width:100px">Editar</th>
+						<th style="max-width:100px" class="no-sort">Editar</th>
 						<th style="max-width:100px">Eliminar</th>
 						</tr>
 					</thead>
@@ -44,18 +44,29 @@
 								</td>
 
 								<td>
-									{{$pagament->categoria_id}}
+									@if($pagament->categoria_id == null)
+										null
+									@else
+										{{$pagament->categoria_id}}
+									@endif
 								</td>	
 				
 								<td>
-									{{$pagament->compte_id}}
+									@if($pagament->compte_id == null)
+										null
+									@else
+										{{$pagament->compte_id}}
+									@endif
 								</td>
 											
 								<td>
-									{{$pagament->compte_id}}
+									@if($pagament->curs_id == null)
+										null
+									@else
+										{{$pagament->curs_id}}
+									@endif
 								</td>
-						
-								
+
 								<td>
 									{{$pagament->titol}}
 								</td>

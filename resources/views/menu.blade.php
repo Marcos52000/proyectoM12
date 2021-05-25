@@ -14,6 +14,7 @@
           $date = date("Y-m-d");
         ?>
        @foreach($categories as $categoria)
+        @if($categoria->estat == 'Actiu')
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink{{$categoria->id}}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{$categoria->categoria}}
@@ -39,6 +40,7 @@
               @endforeach
             </ul>
           </li>
+          @endif
        @endforeach
 
         <li class="nav-item">

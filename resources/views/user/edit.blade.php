@@ -16,16 +16,6 @@
 
     <br>
 
-    <label for="pass" class="mb-4">Contrasenya:</label>
-    <input type="password" class="form-control" name="pass" id="pass" value="{{$usuarios->password}}">
-     @if($errors->has('pass'))
-      <div style='height: 50px;' class="alert alert-danger"> 
-        <p>Introdueix una contrasenya valida</p>
-      </div>
-    @endif
-
-    <br>
-
     <label for="email" class="mb-4">Correu:</label>
     <input type="email" class="form-control" name="email" id="email" value="{{$usuarios->email}}">
      @if($errors->has('email'))
@@ -33,6 +23,20 @@
         <p>Introdueix un correu valid</p>
       </div>
     @endif
+    
+    <br>
+
+    <label class="mb-4" for="rol">rol: </label>
+    <select name="rol" id="rol">
+        @if($usuarios->rol == 'admin') 
+          <option value="admin" selected> admin</option> 
+          <option value="superAdmin" > superAdmin</option> 
+        @else
+          <option value="superAdmin" selected> superAdmin</option> 
+          <option value="admin" > admin</option>  
+        @endif     
+    </select>	
+    
 
   </div>
   <button type="submit" class="btn btn-primary">guardar</button>

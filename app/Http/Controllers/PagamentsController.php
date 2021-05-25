@@ -140,7 +140,7 @@ class PagamentsController extends Controller
         return redirect()->route('pagament.index')->with('success','Registro eliminado satisfactoriamente');
     }
 
-       //export exel y pdf
+       //export excel y pdf
        public function export() 
        {
            return Excel::download(new PagamentsExport, 'pagaments.xlsx');

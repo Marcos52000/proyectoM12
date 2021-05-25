@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use App\Pagaments;
 use App\Categoria;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -46,17 +47,42 @@ class LoginController extends Controller
 
     public function login(){
 
-        $credentials = $this->validate(request(),[
-            'email'=>'email|required|string|max:150',
-            'password'=>'required|string|max:150'
-        ]);
-            
-        if (Auth::attempt($credentials)) {
-            return redirect()->route('admin');
-        }else{
-            return back()->withErrors(['email' => 'Credencials incorrectes,revisa el correu i la contrasenya']);
-        }
-}
+        $captcha = $this->captchaVerify(app('request')->input('h-captcha-response')??'');
 
+        if($captcha == true){             
+        
+            $credentials = $this->validate(request(),[
+                'email'=>'email|required|string|max:150',
+                'password'=>'required|string|max:150',
+                'estat' => 'Actiu'
+            ]);
+            if (Auth::attempt($credentials)) {
+                return redirect()->route('admin');
+            }else{
+                return back()->withErrors(['email' => 'Credencials incorrectes,revisa el correu i la contrasenya']);
+            }
+        }else{
+            return redirect()->back()->withErrors(['h-captcha' =>"Has d'omplir el Captcha"]);
+        }         
+                
+    }
+
+    //funcion captcha
+
+    public function captchaVerify($requestCaptcha){         
+        if($requestCaptcha == '' && $requestCaptcha == null){             
+            return false;       
+        } 
+        $data = array('secret' => "0xA88843643dEEe71B11F632a8F27E55C2fA834435", 'response' => $requestCaptcha );
+        $verify = curl_init();         
+        curl_setopt($verify, CURLOPT_URL, "https://hcaptcha.com/siteverify");         
+        curl_setopt($verify, CURLOPT_POST, true);         
+        curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query($data));         
+        curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);        
+        $response = curl_exec($verify); 
+        $responseData = json_decode($response);         
+        return $responseData->success;
+        
+    }
    
 }

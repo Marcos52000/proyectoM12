@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
+use App\User;
+use App\Pagaments;
+use App\Categoria;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller
@@ -20,11 +24,22 @@ class ResetPasswordController extends Controller
     */
 
     use ResetsPasswords;
+    protected $redirectPath = '/admin';
 
     /**
      * Where to redirect users after resetting their password.
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    
+    public function showResetForm(Request $request, $token = null){
+        $pagaments = Pagaments::all();
+        $categories = Categoria::all();
+
+        return view('auth.passwords.reset', compact('pagaments','categories'))->with([
+            'token' => $token,
+        ]);
+    }
+ 
+
 }

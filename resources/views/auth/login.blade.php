@@ -1,5 +1,5 @@
 @include('menu')
-
+   
 
 <div class="container">
     <div class="row justify-content-center">
@@ -52,6 +52,13 @@
                                 </div>
                             </div>
                         </div>
+                        <br>
+                        <div class="h-captcha" data-sitekey="9c277a70-7dc8-457b-b287-4d26d1cb01ce" name="h-captcha"></div>
+                        @if($errors->has("h-captcha"))     
+                            <div style='height: 3%; width: 30%;' class="alert alert-danger"> 
+                                <p>Has d'omplir el Captcha</p>
+                            </div>           
+                         @endif
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
@@ -64,8 +71,25 @@
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+                                 <!-- Google Login Button -->
+                                 <a href="{{ route('auth/google') }}" name="google" class="btn btn-danger">
+                                    {{ __('Login with Google') }}
+                                </a>
+                                @if($errors->has("google"))     
+                                    <div style='height: 55%; width: 50%;' class="alert alert-danger"> 
+                                        <p>{{$errors->first()}}</p>
+                                    </div>           
+                                @endif
+                                @if (\Session::has('success'))
+                                    <div class="alert alert-success">
+                                        <ul>
+                                            <li>{!! \Session::get('success') !!}</li>
+                                        </ul>
+                                    </div>
+                                @endif
                             </div>
                         </div>
+                        
                     </form>
                 </div>
             </div>

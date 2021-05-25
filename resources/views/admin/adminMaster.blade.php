@@ -14,10 +14,16 @@
     <!-- Custom fonts for this template-->
     <link href={{ asset('fontawesome-free/css/all.min.css')}} rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    
     <!-- Custom styles for this template-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet">
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-      <!-- Custom styles for this page -->
-    <link href="/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/responsive/2.2.7/css/responsive.bootstrap4.min.css" rel="stylesheet">
+
+    
 
 </head>
 
@@ -72,12 +78,14 @@
                 <i class="fas fa-fw fa-table"></i>
                 <span>Comptes</span></a>
         </li>
-         <!-- Nav Item - Tables -->
-         <li class="nav-item">
-            <a class="nav-link" href="/user">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Usuaris</span></a>
-        </li>
+           <!-- Nav Item - Tables -->
+           @if (auth()->user()->rol=="superAdmin")
+           <li class="nav-item">
+              <a class="nav-link" href="/user">
+                  <i class="fas fa-fw fa-table"></i>
+                  <span>Usuaris</span></a>
+          </li>     
+           @endif
          <!-- Nav Item - Tables -->
          <li class="nav-item">
             <a class="nav-link" href="/curs">
@@ -195,7 +203,7 @@
 </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src={{ asset('jquery/jquery.min.js')}}></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src={{ asset('bootstrap/js/bootstrap.bundle.min.js')}}></script>
 
     <!-- Core plugin JavaScript-->
@@ -204,11 +212,28 @@
     <!-- Custom scripts for all pages-->
     <script src={{ asset('js/sb-admin-2.min.js')}}></script>
 
-    <!-- Page level plugins -->
-    <script src="/datatables/jquery.dataTables.min.js"></script>
-    <script src="/datatables/dataTables.bootstrap4.min.js"></script>
-     <!-- Page level custom scripts -->
-     <script src="/js/demo/datatables-demo.js"></script>
+     <!-- scripts -->
+     
+
+     <!-- Data Tables -->
+     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+     <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>
+     <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>
+     
+     <script>
+        $(document).ready(function() {
+            
+            $('#example').DataTable({
+                responsive: true,
+                autoWidth: true,
+                columnDefs: [
+                    { responsivePriority: 1, targets: 0 },
+                    { responsivePriority: 2, targets: -1 }
+                ]
+            });
+        } );
+    </script>   
 
 </body>
 

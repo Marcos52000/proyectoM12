@@ -99,7 +99,7 @@ class CategoriasController extends Controller
         Categoria::find($id)->delete();
         return redirect()->route('categoria.index')->with('success','Registro eliminado satisfactoriamente');
     }
-    //export exel y pdf 
+    //export excel y pdf 
     public function export() 
     {
         return Excel::download(new CategoriesExport, 'categories.xlsx');

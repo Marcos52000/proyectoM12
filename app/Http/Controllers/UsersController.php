@@ -75,15 +75,15 @@ class UsersController extends Controller
         //
         $user = User::find($id);
         if($user->email == $request->email){
-            $this->validate($request,[ 'pass'=>'required|max:150','nom'=>'required|max:50' ,'email'=>'required|max:150']);
+            $this->validate($request,['nom'=>'required|max:50' ,'email'=>'required|max:150']);
         }else{
-            $this->validate($request,[ 'pass'=>'required|max:150','nom'=>'required|max:50' ,'email'=>'required|max:150|unique:users']);
+            $this->validate($request,['nom'=>'required|max:50' ,'email'=>'required|max:150|unique:users']);
         }
         $user->user = $request->nom;
-        $password = Hash::make($request->pass);
-        $user->password = $password;
+        $user->password = $user->password;
         $user->email = $request->email;
         $user->estat = 'Actiu';
+        $user->rol= $request->rol;
         $user->save();
         return redirect()->route('user.index')->with('success','Registro actualizado satisfactoriamente');
  
@@ -107,7 +107,7 @@ class UsersController extends Controller
         return redirect()->route('user.index')->with('success','Registro eliminado satisfactoriamente');
     }
 
-    //export exel
+    //export excel
     public function export() 
     {
         return Excel::download(new UsersExport, 'users.xlsx');

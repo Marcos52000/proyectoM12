@@ -163,6 +163,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Jorenvh\Share\Providers\ShareServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -230,7 +232,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Share' => Jorenvh\Share\ShareFacade::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
-
+        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

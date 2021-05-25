@@ -26,8 +26,15 @@ Route::get('/logout', function(){
     auth()->logout();
     return redirect('/');
 });
+
+Route::get('/home', function(){
+    return redirect('/');
+});
+
 Route::get('/login','Auth\LoginController@inici');
 Route::post('/login','Auth\LoginController@login')->name("login");
+Route::get('google', 'Auth\GoogleController@googleRedirect')->name('auth/google');
+Route::get('/auth/google-callback', 'Auth\GoogleController@loginWithGoogle');
 
 // Password Reset Routes...
 Route::get('/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
@@ -68,14 +75,18 @@ Route::get('/gpagament/export/', 'PagamentsController@export')->name("pagament.e
 Route::get('/gpagament/export2/', 'PagamentsController@download')->name("pagament.export2")->middleware('auth');
 
 //Rutes gesto usuaris
-Route::get('/user', 'UsersController@index')->name("user.index")->middleware('auth');
-Route::get('/user/create', 'UsersController@create')->name("user.create")->middleware('auth');
-Route::post('/user/create', 'UsersController@store')->name("user.store")->middleware('auth');
-Route::get('/user/edit/{id}', 'UsersController@edit')->name("user.edit")->middleware('auth');
-Route::post('/user/edit/{id}', 'UsersController@update')->name("user.update")->middleware('auth');
-Route::delete('/user/delete/{id}', 'UsersController@destroy')->name("user.delete")->middleware('auth');
-Route::get('/user/export/', 'UsersController@export')->name("user.export")->middleware('auth');
-Route::get('/user/export2/', 'UsersController@download')->name("user.export")->middleware('auth');
+Route::get('/user', 'UsersController@index')->name("user.index")->middleware('auth')->middleware('rolUser');
+Route::get('/user/create', 'UsersController@create')->name("user.create")->middleware('auth')->middleware('rolUser');
+Route::post('/user/create', 'UsersController@store')->name("user.store")->middleware('auth')->middleware('rolUser');
+Route::get('/user/edit/{id}', 'UsersController@edit')->name("user.edit")->middleware('auth')->middleware('rolUser');
+Route::post('/user/edit/{id}', 'UsersController@update')->name("user.update")->middleware('auth')->middleware('rolUser');
+Route::delete('/user/delete/{id}', 'UsersController@destroy')->name("user.delete")->middleware('auth')->middleware('rolUser');
+Route::get('/user/export/', 'UsersController@export')->name("user.export")->middleware('auth')->middleware('rolUser');
+Route::get('/user/export2/', 'UsersController@download')->name("user.export")->middleware('auth')->middleware('rolUser');
+
+Route::get('/errorRol',['as'=>'errorRol', function(){
+    return view('error.errorRol');
+}]);
 
 //Rutes gestio comptes
 Route::get('/compte', 'ComptesController@index')->name("compte.index")->middleware('auth');

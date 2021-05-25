@@ -20,13 +20,12 @@
 				
 		</div>
 		<div class="card-body" style="overflow: hidden">
-			<div class="table-responsive">
-				<table class="table table-striped" id="dataTable">
+			<table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
 				<thead>
 					<tr>
-						<th style="width:30px">Id</th>
-						<th class="w-100">Categoria</th>
-						<th class="w-100">Estat</th>
+						<th data-priority="1">Id</th>
+						<th class="w-50">Categoria</th>
+						<th class="w-25">Estat</th>
 						<th style="max-width:100px">Editar</th>
 						<th style="max-width:100px">Eliminar</th>
 					</tr>
@@ -60,8 +59,6 @@
 					@endforeach
 				</tbody>
 			</table>
-		
-			</div>
 		</div>
 	</div>		
 </div>

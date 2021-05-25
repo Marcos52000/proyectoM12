@@ -1,4 +1,4 @@
-@extends('admin.adminMaster')
+	@extends('admin.adminMaster')
 
 @section('content')
 <form class='container' action="/pagament/edit/{{$pagaments->id}}" method="Post">
@@ -80,7 +80,7 @@
     @endif
 
     <label class="mb-4 " for="preu">Preu: </label>
-    <input style="width:200px;" type="number" step='0.05' value="{{ $pagaments->preu}}" class="form-control" name="preu" id="preu">
+    <input style="width:200px;" type="number" step='0.05' min="1" value="{{ $pagaments->preu}}" class="form-control" name="preu" id="preu">
      @if($errors->has('preu'))
       <div style='height: 50px;' class="alert alert-danger"> 
         <p>Introdueix un preu valid</p>

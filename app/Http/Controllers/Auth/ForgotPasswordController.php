@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use App\Pagaments;
 use App\Categoria;
@@ -22,10 +23,12 @@ class ForgotPasswordController extends Controller
 
     use SendsPasswordResetEmails;
 
-    public function showLinkRequestForm(){
+    public function showLinkRequestForm(Request $request, $token = null){
         $pagaments = Pagaments::all();
         $categories = Categoria::all();
      
-        return view("auth.passwords.reset", compact('pagaments','categories'));  
+        return view("auth.passwords.email", compact('pagaments','categories'))->with(
+            ['token' => $token, 'email' => $request->email]
+        );;  
     }
 }

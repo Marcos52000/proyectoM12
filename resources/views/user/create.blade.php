@@ -1,3 +1,4 @@
+
 @extends('admin.adminMaster')
 
 @section('content')
@@ -30,6 +31,14 @@
         <p>Introdueix un correu valid</p>
       </div>
     @endif
+
+    <br>
+
+    <label class="mb-4" for="rol">rol: </label>
+    <select name="rol" id="rol">
+      <option value="admin"> admin</option> 
+      <option value="superAdmin" > superAdmin</option>    
+    </select>
 
   </div>
   <button type="submit" class="btn btn-primary">guardar</button>

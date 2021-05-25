@@ -98,7 +98,7 @@ class CursosController extends Controller
         Curs::find($id)->delete();
         return redirect()->route('curs.index')->with('success','Registro eliminado satisfactoriamente');
     }
-      //export exel y pdf
+      //export excel y pdf
       public function export() 
       {
           return Excel::download(new CursosExport, 'cursos.xlsx');

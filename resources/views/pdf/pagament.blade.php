@@ -19,16 +19,16 @@
                     <th class="w-25">Compte_id</th>
                     <th class="w-25">Curs_id</th>
                     <th class="w-25">Nivell</th>
-                    <th class="w-50">Titol</th>
-                    <th class="w-50">Descripcio</th>
+                    <th class="w-25">Titol</th>
+                    <th class="w-25">Descripcio</th>
                     <th class="w-25">Preu</th>
-                    <th class="w-50">Data_inici</th>
-                    <th class="w-50">Data_fi</th>
+                    <th class="w-25">Data_inici</th>
+                    <th class="w-25">Data_fi</th>
                     <th class="w-25">Estat</th>
-                    <th class="w-50">Create_user_id</th>
-                    <th class="w-50">Edit_user_id</th>
-                    <th class="w-50">Created_at</th>
-                    <th class="w-50">Updated_at</th>
+                    <th class="w-25">Create_user_id</th>
+                    <th class="w-25">Edit_user_id</th>
+                    <th class="w-25">Created_at</th>
+                    <th class="w-25">Updated_at</th>
 
                 </tr>
             </thead>
