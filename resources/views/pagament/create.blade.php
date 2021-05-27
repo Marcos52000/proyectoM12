@@ -10,8 +10,9 @@
     <label class="mb-4" for="categoria">Categoria: </label>
     <select name="categoria" id="categoria">
     @foreach ($categories  as $categoria)
-
-      <option value="{{$categoria->id}}">{{$categoria -> categoria}}</option>  
+      @if($categoria->estat == 'Actiu')
+        <option value="{{$categoria->id}}">{{$categoria -> categoria}}</option>
+      @endif  
     @endforeach 
     </select>
 
@@ -20,9 +21,9 @@
     <label class="mb-4" for="compte">Compte: </label>
     <select name="compte" id="compte">
     @foreach ($comptes  as $compte)
-
-      <option value="{{$compte ->id}}">{{$compte -> compte}}</option>  
-
+      @if($compte->estat == 'Actiu')
+        <option value="{{$compte ->id}}">{{$compte -> compte}}</option>  
+      @endif 
     @endforeach 
     </select>
 
@@ -41,9 +42,9 @@
     <label class="mb-4" for="curs">Curs: </label>
     <select name="curs" id="curs">
     @foreach ($cursos  as $curs)
-
-      <option value="{{$curs->id}}">{{$curs-> curs}}</option>  
-
+      @if($curs->estat == 'Actiu')
+        <option value="{{$curs->id}}">{{$curs-> curs}}</option>  
+      @endif
     @endforeach 
     </select>
 
